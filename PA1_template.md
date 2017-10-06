@@ -54,7 +54,7 @@ So we have lots of missing values for the steps variable. However we should not 
 
 ## What is mean total number of steps taken per day?
 
-### Total number of steps taken per day
+### Histogram of total number of steps taken per day
 We are told that we should ignore missing data for this question. Below we do so and compute the number of steps per day for the days where data is available
 
 ```r
@@ -69,12 +69,11 @@ steps_p_day['steps_per_day']<-counts
 steps_p_day['dates_levels']<-as.Date(steps_p_day[,'dates_levels'])
 ```
 ### Histogram of the total number of steps taken each day
-Now we make a hstogram for the number of steps per day. In practice, due to the format of the data above, we need to use geom_col from ggplot2 with no spacing between the bars (as it should be for a histogram, which in this case contains the time variable in the form of a date in the x axis)
+Now we make a hstogram for the number of steps per day
 
 ```r
 library(ggplot2)
-ggplot(steps_p_day,aes(dates_levels,steps_per_day,width=0.9999))+geom_col(alpha = 0.7)+xlab('day')+ylab('number of steps per day')+
-  theme(axis.text.x=element_text(angle=90,hjust=0.5,vjust=0.6))
+ggplot(steps_p_day,aes(steps_per_day))+geom_histogram(alpha = 0.7,binwidth=1000)+ylab('frequency')+xlab('number of steps per day')
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
@@ -220,8 +219,7 @@ Here is the histogram of the total number of steps taken each day
 
 ```r
 library(ggplot2)
-ggplot(steps_p_day,aes(dates_levels,steps_per_day,width=0.9999))+geom_col(alpha = 0.7)+xlab('day')+ylab('number of steps per day')+
-  theme(axis.text.x=element_text(angle=90,hjust=0.5,vjust=0.6))
+ggplot(steps_p_day,aes(steps_per_day))+geom_histogram(alpha = 0.7,binwidth=1000)+ylab('frequency')+xlab('number of steps per day')
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-14-1.png)<!-- -->
